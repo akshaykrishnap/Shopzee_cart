@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="row w-100 mt-5">
+
+    <div class="col-md-1"></div>
+    
+    <div class="col-md-4 d-flex justify-content-center px-5 py-4">
+        <img src="https://www.motorera.com/wp-content/uploads/2017/03/gpsfleettracking.jpg"  height="450px" width="100%" alt="no image">
+    </div>
+
+    <div class="col-md-6">
+
+        <form *ngIf="!proccedPaymentNow" class="border shadow p-4 mt-4" [formGroup]="checkoutForm">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="uname" formControlName="uname" id="floatingInput" placeholder="name">
+                <label for="floatingInput">User Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" name="flat" formControlName="flat" placeholder="flat">
+                <label for="floatingInput">Apartment Number/House Number</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" name="place" formControlName="place" placeholder="Address">
+                <label for="floatingInput">Place</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" name="pincode" formControlName="pincode" placeholder="pincode">
+                <label for="floatingInput">Pincode</label>
+              </div>
+
+             <div class="d-flex mb-3 justify-content-between">
+                <button (click)="cancel()" class="btn btn-danger ">Cancel</button> 
+                <button (click)="proceedPaymenet()" class="btn btn-success " >Pay Now</button>
+             </div>
+        </form>
+
+        <div class="border shadow p-5" *ngIf="proccedPaymentNow">
+            <h3  style="color: rgb(7, 182, 251);">Delivery Address Confirmation</h3>
+            <h4>Name:{{checkoutForm.value.uname}}</h4>
+            <h4>Apartment:{{checkoutForm.value.flat}}</h4>
+            <h4>Place:{{checkoutForm.value.place}}</h4>
+            <h4>Picode:{{checkoutForm.value.pincode}}</h4>
+            <h4>Grand Total:<i class="fa-solid fa-indian-rupee-sign"></i>{{grandTotal}}</h4>
+
+
+            <div *ngIf="!status" class="d-flex mt-4 justify-content-between">
+
+                <button class="btn btn-danger" (click)="back()">Back</button>
+                <button class="btn btn-success" (click)="payment()">Pay Now</button>
+            </div>
+            <div *ngIf="status">
+              <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-1"></div>
+
+</div>

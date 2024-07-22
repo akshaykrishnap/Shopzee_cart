@@ -1,0 +1,45 @@
+<div class="row m-3">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8 d-flex  rounded shadow ">
+<div style="width: 550px; height: 550px;" class="border rounded p-2 m-2">
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+    <h2 class="text-center text-primary mb-4">Register Form</h2>
+    
+    <div class="d-flex m-2 p-2">
+        <label class="ms-2" for="">Name:</label>
+        <input class="form-control ms-2 w-100" type="text" placeholder="Max" formControlName="username"  >
+        <span *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched"  class="text-danger">*Invalid Input</span>
+    </div>
+
+    <div class="d-flex m-2 p-2">
+            <label class="ms-2" for="">Email:</label>
+            <input class="form-control ms-2 w-100" type="text" placeholder="abd@gmail.com" formControlName="email"  >
+            <span *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched"   class="text-danger">*Invalid Input</span>
+        </div>
+    
+        <div class="d-flex m-2 p-2">
+            <label class="ms-2" for="">password:</label>
+            <input class="form-control ms-2" type="password" placeholder="Abc123" formControlName="password"  >
+            <span *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched"  class="text-danger">*Invalid Input</span>
+        </div>
+
+        <div style="align-items: center; text-align: center;" class="align-items-center">
+            <button type="submit"  style="align-items: center; text-align: center; width: 90px;" class="btn btn-success ">Register</button>
+        </div>
+    
+</form >
+</div>
+<div style="width: 550px; height: 550px;">
+    <img style="width: 450px; height: 450px;" src="https://cdn.dribbble.com/users/790118/screenshots/6971331/media/d1e6cf91d6df3a0ba4dcdffd0b4a05f2.gif" alt="">
+    <div style="align-items: center; text-align: center;" class="align-items-center">
+        <p>Click Here for Sign In</p>
+        <button routerLink="/user/login" style="align-items: center; text-align: center; width: 90px;" class="btn btn-success ">Sign In</button>
+    </div>
+</div>
+    </div>
+
+    <div class="col-md-2"></div>
+
+</div>

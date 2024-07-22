@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div *ngIf="allProduct.length>0" class="row m-2">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-8">
+        <table class="table  table-bordered shadow rounded">
+            <thead class="bg-info">
+
+                <th class="p-3">#</th>
+                <th class="p-3">Name</th>
+                <th class="p-3">Image</th>
+                <th class="p-3">Quatity</th>
+                <th class="p-3">Price</th>
+                <th class="p-3">Action</th>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let product of allProduct;let i = index">
+
+                    <td class="p-4">{{i+1}}</td>
+                    <td class="p-4">{{product.title}}</td>
+                    <td class="p-4"><img style="width: 90px; height: 90px;" [src]="product.image" alt=""></td>
+                    <td class="p-4 d-flex">
+                        <button (click)="incrementItem(product._id)" class="btn">+</button>
+                        <input style="width: 50px;" [value]="product.quantity" class="form-control " type="number">
+                        <button (click)="decrementItem(product._id)" class="btn">-</button>
+                    </td>
+                    <td class="p-4"><i class="fa-solid fa-indian-rupee-sign"></i>{{product.price}}</td>
+                    <td class="p-4"><button (click)="removeCartItem(product._id)" class="btn btn-outline-danger"><i
+                                class="fa-solid fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <button (click)="emptyCart()" class="btn btn-outline-info">Clear Cart</button>
+            <button routerLink="/" class="btn btn-outline-danger ms-2">Back</button>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="shadow rounded p-3">
+
+            <h3>Grand Total: <i class="fa-solid fa-indian-rupee-sign"></i> <span>{{total}}</span></h3>
+            <button routerLink="/checkout" (click)="checkout()" class="btn btn-warning">Check Out</button>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="align-items: center;" *ngIf="allProduct.length==0"
+    class="w-100 flex-column text-align-center mt-5 align-items-center">
+    <h2 style="align-items: center;text-align: center;">Your Cart Is Empty</h2><br>
+    <img style="align-items:center; margin-left: 360px; justify-content: center; text-align: center;"
+        src="https://cdn.dribbble.com/users/5107895/screenshots/14532312/media/a7e6c2e9333d0989e3a54c95dd8321d7.gif"
+        alt="">
+</div>

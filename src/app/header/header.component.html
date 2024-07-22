@@ -1,0 +1,36 @@
+<nav style="background-color: rgb(255, 128, 0);" class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><i class="fa-brands fa-rebel fa-spin"></i>Shoppze</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button routerLink="/wishlist" class="btn btn-outline-info w ms-1" style="color: white;" type="submit">
+                        <i class="fa-solid fa-heart fa-beat"></i>  WishList <span
+                            class="badge text-bg-secondary">{{wishlistCout}}</span></button>
+                </li>
+                <li class="nav-item">
+                    <button routerLink="/carts" class="btn btn-outline-dark ms-1" style="color: white;" type="submit">
+                        <i class="fa-solid fa-cart-shopping fa-flip"></i> Cart <span
+                        class="badge text-bg-secondary">{{CartCnt}}</span></button>
+                </li>
+                <li *ngIf="!loginUserName" >
+                    <button routerLink="/user/login" class="btn nav-item btn-success ms-2">Login</button>
+                </li>
+
+                <li *ngIf="loginUserName" >
+                    <button class="btn btn-danger nav-item ms-2">{{loginUserName}}</button>
+                </li>
+            </ul>
+            <div class="">
+<form style="background-color:rgb(255, 128, 0) ;"  class=" d-flex">
+<input placeholder="Search Items" class="form-control" type="text">
+<button class="btn btn-outline-light ms-2">Search</button>
+</form>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,33 @@
+<app-header></app-header>
+<button routerLink="/" class="btn btn-outline-danger m-2"><i class="fa-solid fa-arrow-left"></i>Back To Home</button>
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"[src]="product.image" alt="..." /></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">ID:{{product._id}}</div>
+                        <h1 class="display-5 fw-bolder">{{product.title}}</h1> 
+                        <div class="fs-5 mb-5">
+                           
+                            <span><i class="fa-solid fa-indian-rupee-sign"></i>:{{product.price}}</span>
+                        </div>
+                        <p class="lead"> {{product.description}} </p>
+                        <div class="d-flex">
+                            <label class="me-3" >Qty ×‌:</label>
+                            <input class="form-control text-center me-3"  type="num" value="1" style="max-width: 3rem" />
+                            <button (click)="addToCart(product)" class="btn btn-outline-dark mx-2" >
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
+                            <button (click)="addToWishList(product)"  class="btn btn-outline-info " >
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<app-footer></app-footer>
